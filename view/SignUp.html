@@ -1,0 +1,350 @@
+<html>
+<head>
+<link href="CSS/bootstrap/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="CSS/SignUp.css" rel="stylesheet"  > 
+<script src="CSS/bootstrap/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+<!-- <script src="JS/SignUp.js"></script> -->
+<!------ Include the above in your HEAD tag ---------->
+</head>
+<body>
+<div class="container" >
+            <form class="form-horizontal" role="form" method="post" onsubmit="return submitValid()" action="../controler/Registration.php">
+                <h2>Registration</h2>
+                <div  id="main">
+                <div class="form-group">
+                    <label for="firstName" class="col-sm-3 control-label">First Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="firstName" placeholder="First Name"  name="firstName" onblur="getFName()" class="form-control" autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastName" class="col-sm-3 control-label">Last Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="lastName" placeholder="Last Name" name="lastName" onblur="getLName()"  class="form-control" autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-3 control-label">Email* </label>
+                    <div class="col-sm-9">
+                        <input type="text" id="email" placeholder="Email" name="email" onblur ="getEmail()" class="form-control" name= "email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-3 control-label">Password*</label>
+                    <div class="col-sm-9">
+                        <input type="password" id="password" placeholder="Password" name="pass" onblur="getPassword()" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirm_assword" class="col-sm-3 control-label">Confirm Password*</label>
+                    <div class="col-sm-9">
+                        <input type="password" id="cpassword" placeholder="Confirm Password" name="compass" onblur="getConfirmpassword()" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="birthDate" class="col-sm-3 control-label">Date of Birth*</label>
+                    <div class="col-sm-9">
+                        <input type="date" name="birthDate" id="uday" onblur="datechk()"  onkeydown="" class="form-control">
+                    </div>
+                <!-- </div>
+                <div class="form-group">
+                    <label for="birthDate" class="col-sm-3 control-label">Date of Birth*</label>
+                    <div class="col-sm-9">
+                        <input type="number" name="month" id="umonth" onblur="monthchk()"  onkeydown="getConfirmpassword()" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="birthDate" class="col-sm-3 control-label">Date of Birth*</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="year" id="uyear" onblur="yearchk()"  onkeydown="getConfirmpassword()" class="form-control">
+                    </div>-->
+                </div> 
+            
+                <div class="form-group">
+                    <label for="phoneNumber" class="col-sm-3 control-label">Phone number </label>
+                    <div class="col-sm-9">
+                        <input type="phoneNumber" id="phoneNumber" placeholder="Phone number" name="phoneno" onblur="getPhone()" class="form-control">
+                        <span class="help-block">Your phone number won't be disclosed anywhere </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Gender</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input type="radio" name="gender" id="femaleRadio" value="Female"> Female
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input type="radio" name="gender" id="maleRadio" value="Male"> Male
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input type="radio" name="gender" id="otherRadio" value="Other"> Other
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- /.form-group -->
+				        <div class="form-group">
+                    <label for="address" class="col-sm-3 control-label">Address</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="address" name="address" onkeydown="genderValid()" placeholder="Address" class="form-control" autofocus>
+                    </div>
+                </div>
+
+                
+                <div class="form-group">
+                        <label for="Height" class="col-sm-3 control-label">SignUp As* </label>
+                    <div class="col-sm-9">
+                        <select name="usertype">
+                            <option value="none" selected disabled>Please select an option</option>
+              							<option value="Doctor">Doctor</option>
+              							<option value="Patient">Patient</option>
+              							<option value="Technation">Technation</option>
+            						</select>
+                    </div>
+                </div>
+                 
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <span class="help-block">*Required fields</span>
+                    </div>
+                </div>
+                </div>
+                
+                 <input type="submit" name ="submit" value= "submit">
+				<p style="text-align:right">page 1 of 2</p>
+            </form> <!-- /form -->
+        </div> <!-- ./container -->
+
+<script>
+  function getFName()
+  {
+      console.log("asche");
+      var name = document.getElementById('firstName').value;
+      console.log(name);
+      var namelength=name.length;
+      var err = true;
+
+      for (var i = 0; i < namelength; i++) {
+        if(!(name[i] >= 'a' && name[i] <= 'z') && !(name[i] >= 'A' && name[i] <= 'Z'))
+        {
+            console.log(name[i]);
+            err = false;
+            //console.log("asce");
+            alert("Name can not have any number or special characters");
+            break;
+        }
+      }
+
+      return err; 
+  }  
+
+  function getLName()
+  {
+      
+      var name = document.getElementById('lastName').value;
+      console.log(name);
+      var namelength=name.length;
+      var err = true;
+
+      for (var i = 0; i < namelength; i++) {
+        if(!(name[i] >= 'a' && name[i] <= 'z') && !(name[i] >= 'A' && name[i] <= 'Z'))
+        {
+            err = false;
+            alert("Name can not have any number or special characters");
+            break;
+        }
+      }
+
+      return err; 
+    
+    
+  } 
+  function datechk()
+        {
+            var date = document.getElementById('uday').value.trim();
+            console.log(date);
+            var today = new Date();
+            var birthDate = new Date(date);
+            var age = today.getFullYear() - birthDate.getFullYear();
+            var m = today.getMonth() - birthDate.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            console.log(age);
+            if(age<0)
+            {
+              alert("age can not negetive");
+              return false;
+            }
+            return true;
+        }
+
+        
+  function getques(){
+    var ques=document.getElementById('ques').value;
+    if(ques.length==0)
+    {
+      alert('Enter the question');
+    }
+  }
+
+  function getans(){
+    var ans=document.getElementById('ans').value;
+    if(ans.length==0)
+    {
+      alert('Enter the question');
+    }
+  }
+
+  function getEmail()
+{
+    var email = document.getElementById('email').value;
+    var emailarr = email.split('@');
+    var err = true;
+    if(emailarr.length == 2)
+    {
+        var emailexarr = emailarr[1].split('.');
+        if(emailexarr.length != 2)
+        {
+            alert('Email is not valid');
+            err = false;
+        }
+    }
+    else
+    {
+        alert("Email is not valid");
+        err = false;
+    }
+    return err;
+}
+function getPhone()
+{
+    var phone = document.getElementById('phoneNumber').value;
+    var length= phone.length;
+    var err = true;
+    if(length!=11){
+      alert("Phoneno is not valid!");
+      err = false;
+
+    }
+    for( var i = 0; i<length; i++)
+    {
+        if(!(phone[i]>= 0 && phone[i]<= 11))
+        {
+            alert("Phone no is not valid");
+            err = false;
+        }
+    }
+    return err;
+}
+
+function getPassword()
+{
+  console.log("in password");
+  var password = document.getElementById('password').value;
+  //console.log(password);
+    var length= password.length;
+    var err = true;
+    if(length< 8){
+      alert("Password must be 8 characters!");
+      err = false;
+    }else{
+      var charFlag = false;
+      for(var i=0; i<length; i++)
+      {
+        if((password[i]>='a' && password[i]<='z') || (password[i]>='A' && password[i]<='Z'))
+        {
+          charFlag = true;
+          break;
+        }
+      }
+      if(!charFlag)
+      {
+        alert('Password must contains at least one char!!');
+        err = false;
+      }
+      var specChar = false;
+      for(var i=0; i<length; i++)
+      {
+        if(password[i]>='!' && password[i]<='/')
+        {
+          specChar = true;
+          break;
+        }
+      }
+      if(!specChar)
+      {
+        alert('Password must contains at least one special char!!');
+        err = false;
+      }
+    }
+    return err;
+}
+
+function getConfirmpassword(){
+  var password = document.getElementById('password').value;
+  var cpassword= document.getElementById('cpassword').value;
+  if( cpassword!=password){
+    alert("password doesnot match");
+    return false;
+  }
+  return true;
+}
+
+function getUser(){
+
+   var owner = document.getElementById('owner').checked;
+   var volunteer= document.getElementById('volunteer').checked;
+   var manager=document.getElementById('manager').checked;
+   var generaluser = document.getElementById('generaluser').checked;
+
+   if(!owner&&!volunteer&&!manager&&!generaluser){
+    alert('Please select an option!');
+    return false;
+
+   }
+   else
+    return true;
+}
+  function genderValid()
+  {
+    var genders = document.getElementsByName("gender");
+    var length = genders.length;
+    var err = false;
+    for(var i=0; i<length; i++)
+    {
+      if(genders[i].checked)
+      {
+        err = true;
+      }
+    }
+    if(!err)
+      alert("Plase select a gender");
+    return err;
+  }
+
+
+  function submitValid()
+  {
+    if(!getFName() || !getLName() || !getEmail() || !getPassword() || !getConfirmpassword() || !datechk() || !getPhone() || !genderValid() || !getUser())
+    {
+      alert("There is something wrong with this fucking form, Please Fill up every fucking thing you fucking moron and then go fuck yourself to the helllllll!!!! >.<");
+      return false;
+    }
+    return true;
+  }
+
+</script>
+
+
+
+
+</body>
+</html>

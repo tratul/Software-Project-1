@@ -41,16 +41,17 @@
             <td id="formCell">
                 <div class="container">
                     <div class="row">
-                        <form>
+                        <form method="post" action="../controler/Login.php">
                           <div class="form-group col col-*">
                             <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                            <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
                           </div>
                           <div class="form-group col col-*">
                             <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                           </div>
-                          <button type="submit" class="btn btn-primary col col-*">Submit</button>
+                          <!-- <button type="submit" class="btn btn-primary col col-*">Submit</button> -->
+                          <input type="submit" name="submit" value="Sign in" class="btn btn-primary col col-*">
                           </br>
                           </br>
                           <br>

@@ -19,26 +19,21 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-inverse bg-light">
-    <a class="navbar-brand" href="#">CareBook</a>
-
-
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="Archive.php">Archive</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="#"><?php echo $_SESSION['login_email']?></a>
-        </li>
-    <li class="nav-item active">
-          <a class="nav-link" href="../../controler/logout.php">Sign Out</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+      <a class="navbar-brand" href="#">CareBook</a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item ">
+            <a class="nav-link" href="home.php">Home <span class="sr-only">(current)</span></a>
+          </li>
+           <li class="nav-item active">
+            <a class="nav-link" href="#"><?php echo $_SESSION['login_email']?></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../controler/logout.php">log Out</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
   <?php
 
@@ -49,7 +44,7 @@
         $heading=$summertext='';
 
 
-            $statement="select * from patient where Email='$email'";
+            $statement="select * from technician where Email='$email'";
             $result = mysqli_query($conn, $statement);
 
            
